@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paštests</title>
+    <style>
+        h1 {
+
+            font-size: 20px;
+            text-decoration: underline;
+            font-family: arial;
+
+        }
+
+        .test {
+            text-align: center;
+            color: red;
+            background-color: cyan;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test">
+        <h1>Pārbaudi sevi matēmātikā</h1>
+
+        <span id="1sk">1</span>
+        <span id="darbiba">+</span>
+        <span id="2sk">2</span>
+        =
+        <input type="number" name="atbilde" id="atbilde">
+        <span id="parbaude"></span>
+
+        <br>
+        <br>
+        <input type="button" value="Clik me !" id="button" onclick="run()">
+    </div>
+    <script>
+        let sk1 = document.getElementById("1sk").innerHTML =
+            Number(Math.floor(Math.random() * 100) + 1);
+        let sk2 = document.getElementById("2sk").innerHTML =
+            Number(Math.floor(Math.random() * 100) + 1);
+        let db = ["+", "-", "*", "/"];
+        let darbiba = document.getElementById("darbiba").innerHTML =
+            db[Math.floor(Math.random() * 4)];
+
+
+        function run() {
+            // console.log(sk1 + darbiba + sk2);
+            // console.log(db[1]);
+            // console.log(darbiba)
+            if (darbiba == db[0]) {
+                let SK = sk1 + sk2;
+                if (SK == document.getElementById("atbilde").value) {
+                    document.getElementById("parbaude").innerHTML = "Pareizi!";
+                } else { document.getElementById("parbaude").innerHTML = "Nepareizi!" }
+                console.log(sk1 + sk2);
+            } else if (darbiba == db[1]) {
+                let SK = sk1 - sk2;
+                console.log(SK);
+                if (SK == document.getElementById("atbilde").value) {
+                    document.getElementById("parbaude").innerHTML = "Pareizi!";
+                } else { document.getElementById("parbaude").innerHTML = "Nepareizi, pareizā atbilde ir " + SK }
+                console.log(sk1 - sk2);
+            } else if (darbiba == db[2]) {
+                let SK = sk1 * sk2;
+                if (SK == document.getElementById("atbilde").value) {
+                    document.getElementById("parbaude").innerHTML = "Pareizi!";
+                } else { document.getElementById("parbaude").innerHTML = "Nepareizi, pareizā atbilde ir " + SK }
+                console.log(sk1 * sk2)
+            } else if (darbiba == db[3]) {
+                let SK = sk1 / sk2;
+                if (SK == document.getElementById("atbilde").value) {
+                    document.getElementById("parbaude").innerHTML = "Pareizi!";
+                } else { document.getElementById("parbaude").innerHTML = "Nepareizi, pareizā atbilde ir " + SK }
+                console.log(sk1 / sk2)
+            };
+
+
+
+        }
+
+        // Get the input field
+        var input = document.getElementById("atbilde");
+
+        // Execute a function when the user presses a key on the keyboard
+        input.addEventListener("keypress", function (event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("button").click();
+            }
+        });
+    </script>
+</body>
+
+</html>
